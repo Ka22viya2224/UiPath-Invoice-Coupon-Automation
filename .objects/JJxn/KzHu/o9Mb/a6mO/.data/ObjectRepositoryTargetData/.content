@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="jKuJnT5SyU25dIDdD87jEA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="" CVScreenId="56884681-6e72-4e8e-9a51-917ad0031af6" CvElementArea="1107, 434, 435, 169" CvType="InputBox" DesignTimeRectangle="1107, 434, 435, 169" ElementType="InputBox" ElementVisibilityArgument="Interactive" Guid="e3e358a1-6b63-4e34-8752-7a6034c1e6d2" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='Invoice Coupon Generator and 4 more pages - Profile 1 - Microsof*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V6">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="56884681-6e72-4e8e-9a51-917ad0031af6" CvTextArea="1140, 547, 121, 20" CvTextArgument="Missing Details" CvType="Text" DesignTimeRectangle="1140, 547, 121, 20" ElementType="Text" Guid="06c3bf56-fa27-4151-bc98-7e81303590c0" SearchSteps="CV" TargetType="ComputerVisionBased" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="bad5f3b593f485f63b26acfdf66e0f43.jpg" xmlns="">0epT4pv6rhEajNW2StxuNCg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

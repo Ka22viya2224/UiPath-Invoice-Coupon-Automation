@@ -1,0 +1,13 @@
+Green Mart
+
+Invoice Number: INV-2026-003 Invoice Date: 31-May-2026
+
+Customer Name: Arjun Kumar Email: arjun.kumar@example.com Phone: 9988776655
+
+Item Product A GST
+
+Grand Total: n2100
+
+Qty 2
+
+Price 500 250

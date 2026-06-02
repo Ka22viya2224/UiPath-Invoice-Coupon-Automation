@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Coupon Generator</title>
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #dbe3ef;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #059669;
+      --danger: #dc2626;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 980px;
+      background: var(--card);
+      border: 1px solid rgba(219, 227, 239, 0.8);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 32px;
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+      color: #fff;
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .header p {
+      margin: 0;
+      opacity: 0.92;
+      max-width: 680px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 0;
+    }
+
+    .panel {
+      padding: 28px 32px 32px;
+    }
+
+    .panel + .panel {
+      border-left: 1px solid var(--border);
+      background: #fbfdff;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: -4px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.08s ease, background 0.2s ease;
+    }
+
+    button:active { transform: translateY(1px); }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .primary:hover { background: var(--primary-dark); }
+
+    .secondary {
+      background: #e5eefc;
+      color: #1e40af;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .result-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .result-value {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      word-break: break-word;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .status.success {
+      background: rgba(5, 150, 105, 0.1);
+      color: var(--success);
+    }
+
+    .status.error {
+      background: rgba(220, 38, 38, 0.1);
+      color: var(--danger);
+    }
+
+    .meta {
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    .meta strong {
+      color: #111827;
+    }
+
+    .small {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .log {
+      margin-top: 16px;
+      border: 1px dashed #c7d2fe;
+      background: #eef2ff;
+      color: #1e3a8a;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 13px;
+      min-height: 48px;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 840px) {
+      .content { grid-template-columns: 1fr; }
+      .panel + .panel { border-left: 0; border-top: 1px solid var(--border); }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>Invoice Coupon Generator</h1>
+      <p>Enter customer details and invoice amount. If the amount is above 1000, the app generates a 6-character coupon code with letters and numbers.</p>
+    </div>
+
+    <div class="content">
+      <div class="panel">
+        <h2 class="section-title">Customer & Invoice Details</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="customerName">Customer Name</label>
+            <input id="customerName" type="text" placeholder="Enter customer name" />
+          </div>
+          <div class="field">
+            <label for="email">Email ID</label>
+            <input id="email" type="email" placeholder="Enter email address" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" type="text" placeholder="Enter phone number" />
+          </div>
+          <div class="field">
+            <label for="invoiceNumber">Invoice Number</label>
+            <input id="invoiceNumber" type="text" placeholder="Enter invoice number" />
+          </div>
+          <div class="field full">
+            <label for="grandTotal">Grand Total</label>
+            <input id="grandTotal" type="number" step="0.01" placeholder="Enter total amount" />
+            <div class="hint">Coupon is generated only when Grand Total is greater than 1000.</div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="primary" onclick="generateCoupon()">Generate Coupon</button>
+          <button class="secondary" onclick="fillSample()">Fill Sample Data</button>
+          <button class="secondary" onclick="resetForm()">Reset</button>
+        </div>
+
+        <div class="log" id="log">Waiting for input...</div>
+      </div>
+
+      <div class="panel">
+        <h2 class="section-title">Output</h2>
+
+        <div class="card">
+          <div class="result-label">Coupon Code</div>
+          <div class="result-value" id="couponCode">—</div>
+          <div id="statusBadge" class="status" style="display:none;"></div>
+        </div>
+
+        <div class="card">
+          <div class="result-label">Summary</div>
+          <div class="meta" id="summaryText">
+            Fill the form and generate a coupon.
+          </div>
+        </div>
+
+        <div class="small">
+          Coupon format: 6 characters, mixed letters and numbers, for example: <strong>A7K2Q9</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function makeCoupon() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let code = '';
+      for (let i = 0; i < 6; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return code;
+    }
+
+    function setBadge(type, text) {
+      const badge = document.getElementById('statusBadge');
+      badge.style.display = 'inline-flex';
+      badge.className = 'status ' + type;
+      badge.textContent = text;
+    }
+
+    function generateCoupon() {
+      const customerName = document.getElementById('customerName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const invoiceNumber = document.getElementById('invoiceNumber').value.trim();
+      const grandTotal = parseFloat(document.getElementById('grandTotal').value);
+      const log = document.getElementById('log');
+      const couponCode = document.getElementById('couponCode');
+      const summaryText = document.getElementById('summaryText');
+
+      if (!customerName || !email || !phone || !invoiceNumber || isNaN(grandTotal)) {
+        couponCode.textContent = '—';
+        setBadge('error', 'Missing Details');
+        summaryText.innerHTML = 'Please enter all fields before generating a coupon.';
+        log.textContent = 'Validation failed: one or more fields are empty.';
+        return;
+      }
+
+      const summary = `Customer Name: ${customerName}\nEmail: ${email}\nPhone: ${phone}\nInvoice Number: ${invoiceNumber}\nGrand Total: ${grandTotal.toFixed(2)}`;
+      summaryText.innerHTML = `<strong>Customer:</strong> ${customerName}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone}<br><strong>Invoice:</strong> ${invoiceNumber}<br><strong>Total:</strong> ${grandTotal.toFixed(2)}`;
+
+      if (grandTotal > 1000) {
+        const code = makeCoupon();
+        couponCode.textContent = code;
+        setBadge('success', 'Eligible');
+        log.textContent = summary + `\n\nResult: Eligible for coupon\nGenerated Coupon: ${code}`;
+      } else {
+        couponCode.textContent = 'NOT ELIGIBLE';
+        setBadge('error', 'Not Eligible');
+        log.textContent = summary + '\n\nResult: Grand Total is not above 1000, so no coupon generated.';
+      }
+    }
+
+    function fillSample() {
+      document.getElementById('customerName').value = 'Rahul Sharma';
+      document.getElementById('email').value = 'rahul.sharma@example.com';
+      document.getElementById('phone').value = '9876543210';
+      document.getElementById('invoiceNumber').value = 'INV-2026-001';
+      document.getElementById('grandTotal').value = '1250';
+      document.getElementById('log').textContent = 'Sample data loaded. Click Generate Coupon.';
+      document.getElementById('couponCode').textContent = '—';
+      document.getElementById('statusBadge').style.display = 'none';
+      document.getElementById('summaryText').innerHTML = 'Sample invoice data has been filled in.';
+    }
+
+    function resetForm() {
+      document.getElementById('customerName').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('invoiceNumber').value = '';
+      document.getElementById('grandTotal').value = '';
+      document.getElementById('couponCode').textContent = '—';
+      document.getElementById('statusBadge').style.display = 'none';
+      document.getElementById('summaryText').innerHTML = 'Fill the form and generate a coupon.';
+      document.getElementById('log').textContent = 'Waiting for input...';
+    }
+  </script>
+</body>
+</html>

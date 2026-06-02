@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Coupon Code",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "ily0kCbRNUabcAMLxE4UdQ",
+  "Reference": "ATNzOJyp30WtdvhoODvrVA/ily0kCbRNUabcAMLxE4UdQ",
+  "ParentRef": "ATNzOJyp30WtdvhoODvrVA/o9MbY5u2NkW5OP1V6YLymw",
+  "Created": "2026-06-02T04:35:34.8128923Z",
+  "Updated": "2026-06-02T04:35:34.8128923Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.4.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

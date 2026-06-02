@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="57QCU3wtVkalFtLjajZMkA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="" CVScreenId="014d19a2-ee5c-432c-9b48-10160cb7f959" CvElementArea="716, 567, 307, 60" CvType="InputBox" DesignTimeRectangle="716, 567, 307, 60" ElementType="InputBox" ElementVisibilityArgument="Interactive" Guid="77c3850d-b74c-40db-a30c-4dd6acdf7f83" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='msedge.exe' cls='Chrome_WidgetWin_1' title='Invoice Coupon Generator and 4 more pages - Profile 1 - Microsof*' /&gt;" SearchSteps="CV" TargetType="ComputerVisionBased" Version="V6">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="014d19a2-ee5c-432c-9b48-10160cb7f959" CvTextArea="716, 540, 126, 17" CvTextArgument="Invoice Number" CvType="Text" DesignTimeRectangle="716, 540, 126, 17" ElementType="Text" Guid="bb2c1c96-409e-497a-b8b8-2f683a93120d" SearchSteps="CV" TargetType="ComputerVisionBased" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="e491eda089a60432beefe257e363ddb7.jpg" xmlns="">0ZFUtyDtj20STJBkAMs7w8A</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

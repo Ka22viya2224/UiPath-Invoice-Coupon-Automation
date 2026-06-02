@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Edge Invoice Coupon Generator",
+  "Type": "App",
+  "Id": "JJxnVHkiUk2fhXJM2pQ29g",
+  "Reference": "ATNzOJyp30WtdvhoODvrVA/JJxnVHkiUk2fhXJM2pQ29g",
+  "Created": "2026-06-02T04:31:03.1475232Z",
+  "Updated": "2026-06-02T04:31:03.1475232Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.4.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Grand Total",
+  "Type": "Element",
+  "TaxonomyType": "Input",
+  "Id": "-k5DATmp-E6yIdKbrNr4Sg",
+  "Reference": "ATNzOJyp30WtdvhoODvrVA/-k5DATmp-E6yIdKbrNr4Sg",
+  "ParentRef": "ATNzOJyp30WtdvhoODvrVA/o9MbY5u2NkW5OP1V6YLymw",
+  "Created": "2026-06-02T04:33:03.5116048Z",
+  "Updated": "2026-06-02T04:33:03.5116048Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=26.4.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.12.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
